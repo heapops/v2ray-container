@@ -1,0 +1,20 @@
+version: "2.4"
+x-logging:
+  &default-logging
+  driver: "json-file"
+  options:
+    max-size: "200k"
+    max-file: "10"
+
+services:
+  v2ray:
+    container_name: v2ray
+    image: heapops/v2ray:latest
+    volumes:
+      - ./config.json:/etc/v2ray/config.json
+    env_file: ./v2ray.secret
+    restart: unless-stopped
+    ports:
+      - "8849:8849/tcp"
+    network_mode: "bridge"
+    logging: *default-logging
