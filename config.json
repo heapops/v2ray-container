@@ -5,7 +5,7 @@
     "loglevel": "info"
   },
   "inbound": {
-    "port": 8849,
+    "port": __V2RAY_PORT__,
     "listen":"0.0.0.0",
     "protocol": "vmess",
     "settings": {
