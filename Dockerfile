@@ -1,5 +1,7 @@
 FROM v2ray/official
 
-COPY entrypoint.sh ./entrypoint.sh
-RUN chmod +x ./entrypoint.sh
-ENTRYPOINT ["./entrypoint.sh"]
+USER root
+RUN apk --no-cache add iptables
+
+COPY entrypoint.sh /entrypoint.sh
+ENTRYPOINT ["sh /entrypoint.sh"]
